@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::210749645231:role/eksctl-expense-cluster-nodegroup-e-NodeInstanceRole-TjLtpCNqp154
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - expense-pod-reader
+      userarn: arn:aws:iam::210749645231:user/siva
+      username: siva
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-12-21T07:59:30Z"
+  name: aws-auth
+  namespace: kube-system
+  uid: f5d5adf5-69b3-4ca9-bda2-1b53490d4e7e #don't delete this
